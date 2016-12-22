@@ -15,8 +15,8 @@ class ImporterTest < Minitest::Test
     filename = 'csv/nps_parks.csv'
     location = 'csv/parks_by_state.csv'
     importer = NationalParkImporter.new(filename, location)
-    result = importer.import
+    p result = importer.import
 
-    assert_equal result, "Hello World"
+    assert_equal "Hello World", result
   end
 end

@@ -25,6 +25,6 @@ class NationalParkImporter
     state_parks.each do |key, value|
       json << "#{key},#{value}"+"\n"
     end
-    json
+    p json
   end
 end
