@@ -26,7 +26,7 @@ var width = 700,
 // Queue
 queue()
 	.defer(d3.json, "http://rawgit.com/geobabbler/us-state-squares/380435e6d7295251519797ecc38d3ee91fb05a01/state_squares.geojson")
-	.defer(d3.csv, "https://raw.githubusercontent.com/lucyconklin/d3_map/master/data.csv", function(d) {
+	.defer(d3.csv, "https://raw.githubusercontent.com/lucyconklin/d3_map/master/state_data.csv", function(d) {
 		data.set(d.state, +d.bpc);
 })
 	.await(ready);
