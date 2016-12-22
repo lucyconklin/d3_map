@@ -1,10 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
 $w: 100%;
 $h: 100%;
-$font-stack: 'Raleway', Helvetica, sans-serif;
+$font-stack: 'Slabo 27px', serif;
 $place-fill: #444;
 $tip-color: #e2e3e3;
-$gray: #333;
+$gray: #eee;
 $transparent: rgba(0,0,0,.7);
 body{
   width: $w;
@@ -46,14 +46,14 @@ h2{
   fill: none;
 }
 #map{
-  margin-top: 7rem;
+  margin-top: 2rem;
 }
 text {
   pointer-events: none;
   font: .75rem $font-stack;
 }
 .states {
-  fill: $gray;
+  fill: #eee;
 }
 .states :hover {
   stroke: $gray;

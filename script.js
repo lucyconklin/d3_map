@@ -1,13 +1,13 @@
 // Variables
-var width = 700,
-	height = 400,
+var width = 800,
+	height = 500,
 	svg = d3.select("#map")
 	.append("svg")
 	.attr("width", width)
 	.attr("height", height),
 	colorScale = ['#e5f5f9', '#2ca25f'],
 	color = d3.scale.linear()
-	.domain([0, 6.5])
+	.domain([0, 8])
 	.range(colorScale),
 	data = d3.map(),
 	projection = d3.geo.equirectangular()
@@ -20,13 +20,13 @@ var width = 700,
 	.attr('class', 'd3-tip')
 	.offset([-20, 0])
 	.html(function(d) {
-		return "<strong>" + d.properties.abbr + " - </strong><span>" + data.get(d.properties.abbr) + " breweries per capita</span>"
+		return "<strong>" + d.properties.name + " - </strong><span>" + data.get(d.properties.name) + " national parks</span>"
 	});
 
 // Queue
 queue()
 	.defer(d3.json, "http://rawgit.com/geobabbler/us-state-squares/380435e6d7295251519797ecc38d3ee91fb05a01/state_squares.geojson")
-	.defer(d3.csv, "https://raw.githubusercontent.com/lucyconklin/d3_map/master/state_data.csv", function(d) {
+	.defer(d3.csv, "https://raw.githubusercontent.com/lucyconklin/d3_map/master/state_data", function(d) {
 		data.set(d.state, +d.bpc);
 })
 	.await(ready);
@@ -40,10 +40,10 @@ function ready(error, d) {
     .enter()
     .append("path")
     .attr("class", function(d) {
-      return d.properties.abbr;
+      return d.properties.name;
     })
     .style("fill", function(d) {
-      return color(data.get(d.properties.abbr))
+      return color(data.get(d.properties.name))
     })
     .attr("d", path)
 		.on('mouseover', tip.show)
@@ -59,7 +59,7 @@ function ready(error, d) {
 	.attr('dy', '.5em')
 	.attr('dx', '-.7em')
 	.text(function(d){
-		return d.properties.abbr;
+		return d.properties.name;
 	});
 	svg.call(tip);
 
@@ -90,7 +90,7 @@ function ready(error, d) {
 		.attr('transform', 'translate(0,0)'),
 	y = d3.scale.linear()
 		.range([0, 250])
-		.domain([0, 6.5]),
+		.domain([0, 8]),
 	yAxis = d3.svg.axis()
 		.scale(y)
 		.ticks(4);
