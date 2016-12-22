@@ -5,7 +5,7 @@ var width = 800,
 	.append("svg")
 	.attr("width", width)
 	.attr("height", height),
-	colorScale = ['#e5f5f9', '#2ca25f'],
+	colorScale = ['#E1FF95', '#008050'],
 	color = d3.scale.linear()
 	.domain([0, 8])
 	.range(colorScale),
